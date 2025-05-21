@@ -34,7 +34,28 @@ hist(predicted_ess_lm,
   <p>Figure 1 - Histogram of the predictions from the regression-model
 </div>
 
-The first ANN-model I tested was a model with a logistic activation function and no hidden layers. This model reported a Pearson’s R between the model and the test data of 0,255 which is worse than the regression-model. I trained several other models with different activation functions e.g. Tanh, Sigmoid, ReLU, and Softplus. The best model was an ANN-model with Softplus as activation function and with no hidden layers. The Pearson R of this model was 0.264 and thereby outperforms the regression-model by 0,06. Figure 2 depicts that the ANN-model predicts the police trust in a greater range than the regression-model, but only slightly. The only difference is that the ANN-model has a predicted range from 0,50 to 0,90 where the regression-model went from 0,55 to 0,90. 
+The first ANN-model I tested was a model with a logistic activation function and no hidden layers. This model reported a Pearson’s R between the model and the test data of 0,255 which is worse than the regression-model. I trained several other models with different activation functions e.g. Tanh, Sigmoid, ReLU, and Softplus. The best model was an ANN-model with Softplus as activation function and with no hidden layers. The Pearson R of this model was 0.264 and thereby outperforms the regression-model by 0,06. Figure 2 depicts that the ANN-model predicts the police trust in a greater range than the regression-model, but only slightly. The only difference is that the ANN-model has a predicted range from 0,50 to 0,90 where the regression-model went from 0,55 to 0,90. Below is the code for the ANN model 
+
+```r
+## Model 6 ## - with softplus - the model which is presented in the paper
+softplus <- function(x) log(1 + exp(x))
+set.seed(12345)
+ess_model6 <- neuralnet(trstplc_new ~ ., 
+                        data = ess_train, act.fct = softplus, stepmax = 1e+06)
+ess_model6
+
+plot(ess_model6) # 
+
+model_results6 <- compute(ess_model6, ess_test[1:11])
+predicted_ess6 <- model_results6$net.result
+cor(predicted_ess6, ess_test$trstplc_new) # 0.264
+# further exploration
+plot(predicted_ess6, ess_test$trstplc_new)
+hist(predicted_ess6,
+     main = "Predicted values for the ANN-model",
+     xlab = "predicted police trust") # it predicts in a lesser frame) #it predicts in a better way than lm 
+hist(ess_test$trstplc_new)
+```
 
 <div align="center">
   <img src="https://github.com/peeje17/Forecasting-Trust-in-Police/blob/main/hist_ann-model.png" alt="Figure 1" width="WIDTH" height="HEIGHT">
