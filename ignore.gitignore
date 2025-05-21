@@ -59,5 +59,3 @@ rsconnect/
 # Specific datasets
 data/
 ESS9e03_1.csv
-
-# End of https://www.toptal.com/developers/gitignore/api/r
