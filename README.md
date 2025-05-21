@@ -4,11 +4,14 @@ Forecasting Trust in Police – using Artificial Neural  Network (ANN)
 ## Introduction 
 I will try to forecast the trust in police by using machine learning. I will be developing an Artificial Neural Network (ANN) model which will try to predict the level of trust. It is relevant for the police to know where in the country or district the trust towards police is strong or weak. This can help the police officers in the field to be aware of how to act in certain situations depending on which area they are operating in. 
 
-The focus will be on the methods, using ANN in political science, but contact me if you want the discussion part as well. 
+The focus will be on the methods, using ANN in political science, but contact me if you want the discussion part as well.
+The data used here comes from the the European social survey - you can download it here: https://ess.sikt.no/en/study/bdc7c350-1029-4cb3-9d5e-53f668b8fa74 
 
 
 ## Results 
 Firstly I did a robust regression-model because the dependent variable is not normally distributed (Agresti, 2018, 163). Table 1 shows the multiple regression analysis, and you can observe that there are several variables which are not significant (see appendix). Rather surprising is that the variable which asks the respondent whether they feel safe when they walk alone at night (aesfdrk), is not significant. The same goes for unemployment (uemp3m), age (agea), and geography (domicil). The variable geography has a negative coefficient when going from the country to the city as expected by the theory, but it is surprising that it is insignificant. This is also confirmed by the very low adjusted r^2-value of 0,069, which indicates that the linear regression-model only explains about 7% of the variation in the data. Already now there are things that can be optimized regarding the chosen variables in order to secure a better result. 
+
+picture
 
 I divided the data into two parts. The first part containing 75% of the data and which means that a total of 1618 observations is used to train the ANN-model. The remaining 25% (539 observations) will be used to test whether the model can predict trust in police. Thereby, the model will be tested on unseen data, which is one of the general strengths of machine learning. For comparison I tested the regression model’s result to predict police trust. I performed a correlation test between the regression model and the unseen test data. The Pearson’s R reports a 0,258 correlation which is a weak positive correlation and means that the regression-model poorly predicts the trust in police in Germany. This is also shown in figure 1, where the regression-model only makes predictions in the range of 0,55 to 0,90 even though the actual range is between 0 and 1 (after normalising). Below are the coding for the regression model: 
 
