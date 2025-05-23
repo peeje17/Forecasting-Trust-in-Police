@@ -1,5 +1,5 @@
 # Forecasting-Trust-in-Police 
-Forecasting Trust in Police – using Artificial Neural  Network (ANN)
+Forecasting Trust in Police – using Artificial Neural  Network (ANN). One of my home assignments in the course "Computational Political Science" at Zeppelin University. 
 
 ## Introduction 
 I will try to forecast the trust in police by using machine learning. I will be developing an Artificial Neural Network (ANN) model which will try to predict the level of trust. It is relevant for the police to know where in the country or district the trust towards police is strong or weak. This can help the police officers in the field to be aware of how to act in certain situations depending on which area they are operating in. 
